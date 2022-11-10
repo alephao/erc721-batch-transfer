@@ -13,7 +13,7 @@ snapshot:
 .PHONY: codegen
 codegen:
 		python scripts/solcery/main.py errsig ./src/*.sol
-		python scripts/solcery/main.py errgen ./src/test/utils/Errors.sol ./src/*.sol
+		python scripts/solcery/main.py errgen ./test/utils/Errors.sol ./src/*.sol
 
 .PHONY: format
 format:
