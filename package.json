@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "prettier": "prettier --write 'src/**/*.sol'",
-    "prettier:list": "prettier --list-different 'src/**/*.sol'",
-    "prettier:check": "prettier --check 'src/**/*.sol'",
-    "solhint": "solhint --config ./.solhint.json 'src/**/*.sol' --fix",
-    "solhint:check": "solhint --config ./.solhint.json './src/**/*.sol'",
+    "prettier": "prettier --write 'src/**/*.sol' 'test/**/*.sol'",
+    "prettier:list": "prettier --list-different 'src/**/*.sol' 'test/**/*.sol'",
+    "prettier:check": "prettier --check 'src/**/*.sol' 'test/**/*.sol'",
+    "solhint": "solhint --config ./.solhint.json 'src/**/*.sol' 'test/**/*.sol' --fix",
+    "solhint:check": "solhint --config ./.solhint.json './src/**/*.sol' 'test/**/*.sol'",
     "lint": "yarn prettier && yarn solhint",
     "lint:check": "yarn prettier:check && yarn solhint:check",
     "prepare": "husky install",

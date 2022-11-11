@@ -11,7 +11,11 @@ contract ERC721BatchTransfer {
     error NotOwnerOfToken();
     error InvalidCaller();
 
-    event BatchTransferToSingle(address indexed contractAddress, address indexed to, uint256[] tokenIds);
+    event BatchTransferToSingle(
+        address indexed contractAddress,
+        address indexed to,
+        uint256[] tokenIds
+    );
 
     modifier noZero() {
         if (msg.sender == address(0)) revert InvalidCaller();
@@ -30,11 +34,7 @@ contract ERC721BatchTransfer {
             if (msg.sender != owner) {
                 revert NotOwnerOfToken();
             }
-            erc721Contract.transferFrom(
-                owner,
-                to,
-                tokenId
-            );
+            erc721Contract.transferFrom(owner, to, tokenId);
             unchecked {
                 ++i;
             }
@@ -53,11 +53,7 @@ contract ERC721BatchTransfer {
             if (msg.sender != owner) {
                 revert NotOwnerOfToken();
             }
-            erc721Contract.safeTransferFrom(
-                owner,
-                to,
-                tokenId
-            );
+            erc721Contract.safeTransferFrom(owner, to, tokenId);
             unchecked {
                 ++i;
             }
@@ -80,11 +76,7 @@ contract ERC721BatchTransfer {
             if (msg.sender != owner) {
                 revert NotOwnerOfToken();
             }
-            erc721Contract.transferFrom(
-                owner,
-                to,
-                tokenId
-            );
+            erc721Contract.transferFrom(owner, to, tokenId);
             unchecked {
                 ++i;
             }
@@ -107,11 +99,7 @@ contract ERC721BatchTransfer {
             if (msg.sender != owner) {
                 revert NotOwnerOfToken();
             }
-            erc721Contract.safeTransferFrom(
-                owner,
-                to,
-                tokenId
-            );
+            erc721Contract.safeTransferFrom(owner, to, tokenId);
             unchecked {
                 ++i;
             }

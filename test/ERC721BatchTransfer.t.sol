@@ -4,11 +4,11 @@ pragma solidity >=0.8.4;
 import {ERC721} from "@openzeppelin/token/ERC721/ERC721.sol";
 
 import {TestBase} from "$/test/utils/TestBase.sol";
-import {Errors} from '$/test/utils/Errors.sol';
+import {Errors} from "$/test/utils/Errors.sol";
 import {A} from "$/test/utils/Addresses.sol";
 
-import {ERC721BatchTransfer} from '$/src/ERC721BatchTransfer.sol';
-import {IERC721} from '$/src/IERC721.sol';
+import {ERC721BatchTransfer} from "$/src/ERC721BatchTransfer.sol";
+import {IERC721} from "$/src/IERC721.sol";
 
 contract ERC721Mock is ERC721 {
     constructor() ERC721("MOCK", "M") {}
@@ -19,7 +19,7 @@ contract ERC721Mock is ERC721 {
 
     function mintMany(address to, uint256[] calldata tokenIds) external {
         uint256 length = tokenIds.length;
-        for (uint256 i; i < length;) {
+        for (uint256 i; i < length; ) {
             _mint(to, tokenIds[i]);
             unchecked {
                 ++i;
@@ -45,7 +45,7 @@ contract ERC721BatchTransferUnitTest is TestBase {
         erc721 = IERC721(address(_erc721));
         sut = new ERC721BatchTransfer();
         HEVM.stopPrank();
-        
+
         uint256[] memory tokenIds = new uint256[](5);
         tokenIds[0] = 1;
         tokenIds[1] = 2;
@@ -64,7 +64,9 @@ contract ERC721BatchTransferUnitTest is TestBase {
         _erc721.mintMany(A.bob, tokenIds);
     }
 
-    function test_batchTransferToSingleWallet_WhenAlephaoTransferItsTokens() public {
+    function test_batchTransferToSingleWallet_WhenAlephaoTransferItsTokens()
+        public
+    {
         HEVM.startPrank(A.alephao);
         _erc721.setApprovalForAll(address(sut), true);
         sut.batchTransferToSingleWallet(erc721, A.cassie, alephaoTokens);
@@ -77,7 +79,9 @@ contract ERC721BatchTransferUnitTest is TestBase {
         assertEq(_erc721.ownerOf(5), A.cassie);
     }
 
-    function test_batchTransferToSingleWallet_WhenAlephaoTransferItsTokensUsingApprove() public {
+    function test_batchTransferToSingleWallet_WhenAlephaoTransferItsTokensUsingApprove()
+        public
+    {
         HEVM.startPrank(A.alephao);
         _erc721.approve(address(sut), 1);
         _erc721.approve(address(sut), 2);
@@ -94,20 +98,26 @@ contract ERC721BatchTransferUnitTest is TestBase {
         assertEq(_erc721.ownerOf(5), A.cassie);
     }
 
-    function test_batchTransferToSingleWallet_WhenAlephaoTransferItsOwnTokensButContractIsNotApproved() public {
+    function test_batchTransferToSingleWallet_WhenAlephaoTransferItsOwnTokensButContractIsNotApproved()
+        public
+    {
         HEVM.prank(A.alephao);
         HEVM.expectRevert("ERC721: caller is not token owner or approved");
         sut.batchTransferToSingleWallet(erc721, A.cassie, alephaoTokens);
     }
 
-    function test_batchTransferToSingleWallet_WhenAlephaoTransferNonApprovedTokens() public {
+    function test_batchTransferToSingleWallet_WhenAlephaoTransferNonApprovedTokens()
+        public
+    {
         HEVM.startPrank(A.alephao);
         _erc721.approve(address(sut), 1);
         HEVM.expectRevert("ERC721: caller is not token owner or approved");
         sut.batchTransferToSingleWallet(erc721, A.cassie, alephaoTokens);
     }
 
-    function test_batchTransferToSingleWallet_WhenAlephaoTransfersBobTokens() public {
+    function test_batchTransferToSingleWallet_WhenAlephaoTransfersBobTokens()
+        public
+    {
         HEVM.startPrank(A.alephao);
         _erc721.setApprovalForAll(address(sut), true);
         HEVM.expectRevert(Errors.NotOwnerOfToken());
@@ -115,7 +125,9 @@ contract ERC721BatchTransferUnitTest is TestBase {
         HEVM.stopPrank();
     }
 
-    function test_batchTransferToSingleWallet_WhenAlephaoTransferingSomeAlephaoTokensAndSomeBobTokens() public { 
+    function test_batchTransferToSingleWallet_WhenAlephaoTransferingSomeAlephaoTokensAndSomeBobTokens()
+        public
+    {
         uint256[] memory tokenIds = new uint256[](5);
         tokenIds[0] = alephaoTokens[0];
         tokenIds[1] = bobTokens[0];
