@@ -7,8 +7,11 @@ import {IERC721} from "$/src/IERC721.sol";
 /// @author Aleph Retamal (https://github.com/alephao)
 /// @notice Transfer ERC721 tokens in batches to a single wallet or multiple wallets.
 contract ERC721BatchTransfer {
+    /// @dev 0x5f6f132c
     error InvalidArguments();
+    /// @dev 0x4c084f14
     error NotOwnerOfToken();
+    /// @dev 0x48f5c3ed
     error InvalidCaller();
 
     event BatchTransferToSingle(
