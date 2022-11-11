@@ -11,6 +11,7 @@ import {ERC721BatchTransfer} from "$/src/ERC721BatchTransfer.sol";
 import {IERC721} from "$/src/IERC721.sol";
 
 contract ERC721Mock is ERC721 {
+    // solhint-disable-next-line no-empty-blocks
     constructor() ERC721("MOCK", "M") {}
 
     function mint(address to, uint256 tokenId) external {
