@@ -20,7 +20,12 @@ contract ERC721BatchTransfer {
     event BatchTransferToSingle(
         address indexed contractAddress,
         address indexed to,
-        uint256[] tokenIds
+        uint256 amount
+    );
+
+    event BatchTransferToMultiple(
+        address indexed contractAddress,
+        uint256 amount
     );
 
     modifier noZero() {
@@ -50,6 +55,7 @@ contract ERC721BatchTransfer {
                 ++i;
             }
         }
+        emit BatchTransferToSingle(address(erc721Contract), to, length);
     }
 
     /// @notice transfer multiple tokens to the same wallet using the `ERC721.safeTransferFrom` method
@@ -73,6 +79,7 @@ contract ERC721BatchTransfer {
                 ++i;
             }
         }
+        emit BatchTransferToSingle(address(erc721Contract), to, length);
     }
 
     /// @notice Transfer multiple tokens to multiple wallets using the ERC721.transferFrom method
@@ -105,6 +112,8 @@ contract ERC721BatchTransfer {
                 ++i;
             }
         }
+
+        emit BatchTransferToMultiple(address(erc721Contract), length);
     }
 
     /// @notice Transfer multiple tokens to multiple wallets using the ERC721.safeTransferFrom method
@@ -136,5 +145,7 @@ contract ERC721BatchTransfer {
                 ++i;
             }
         }
+
+        emit BatchTransferToMultiple(address(erc721Contract), length);
     }
 }
