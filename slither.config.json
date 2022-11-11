@@ -2,8 +2,9 @@
   "solc_remaps": [
     "@ds-test/=lib/ds-test/src/",
     "@forge-std/=lib/forge-std/src/",
-    "$/=src/"
+    "@openzeppelin/=lib/openzeppelin-contracts/contracts/",
+    "$/=./"
   ],
   "filter_paths": "lib",
-  "detectors_to_exclude": "solc-version"
+  "detectors_to_exclude": ["solc-version", "out", "scripts", "cache"]
 }
