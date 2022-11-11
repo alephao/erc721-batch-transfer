@@ -25,7 +25,7 @@ lint:
 
 .PHONY: analyze
 analyze:
-	slither src/*.sol --config-file slither.config.json
+	slither . --config-file slither.config.json
 
 .PHONY: typechain
 typechain:
