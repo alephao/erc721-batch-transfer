@@ -12,7 +12,9 @@ import {ERC721BatchTransfer} from "$/src/ERC721BatchTransfer.sol";
 import {IERC721} from "$/src/IERC721.sol";
 
 // solhint-disable func-name-mixedcase
-contract BatchTransferToSingleWalletWhenWalletsOwnNoTokensBenchmarkTest is TestBase {
+contract BatchTransferToSingleWalletWhenWalletsOwnNoTokensBenchmarkTest is
+    TestBase
+{
     ERC721Mock internal _erc721;
     IERC721 internal erc721;
     ERC721BatchTransfer internal sut;
@@ -56,13 +58,17 @@ contract BatchTransferToSingleWalletWhenWalletsOwnNoTokensBenchmarkTest is TestB
         tos[4] = A.dido;
     }
 
-    function test_batchTransferToMultipleWallets_5_WhenWalletsOwnNoTokens() public {
+    function test_batchTransferToMultipleWallets_5_WhenWalletsOwnNoTokens()
+        public
+    {
         HEVM.prank(A.alephao);
         sut.batchTransferToMultipleWallets(erc721, tos, alephaoTokens);
     }
 }
 
-contract BatchTransferToSingleWalletWhenWalletsOwnTokensBenchmarkTest is TestBase {
+contract BatchTransferToSingleWalletWhenWalletsOwnTokensBenchmarkTest is
+    TestBase
+{
     ERC721Mock internal _erc721;
     IERC721 internal erc721;
     ERC721BatchTransfer internal sut;
@@ -106,7 +112,9 @@ contract BatchTransferToSingleWalletWhenWalletsOwnTokensBenchmarkTest is TestBas
         tos[4] = A.bob;
     }
 
-    function test_batchTransferToMultipleWallets_5_WhenWalletsOwnTokens() public {
+    function test_batchTransferToMultipleWallets_5_WhenWalletsOwnTokens()
+        public
+    {
         HEVM.prank(A.alephao);
         sut.batchTransferToMultipleWallets(erc721, tos, alephaoTokens);
     }

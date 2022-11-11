@@ -48,12 +48,16 @@ contract SafeBatchTransferToSingleWalletBenchmarkTest is TestBase {
         _erc721.setApprovalForAll(address(sut), true);
     }
 
-    function test_safeBatchTransferToSingleWallet_5_WhenWalletOwnNoTokens() public {
+    function test_safeBatchTransferToSingleWallet_5_WhenWalletOwnNoTokens()
+        public
+    {
         HEVM.prank(A.alephao);
         sut.safeBatchTransferToSingleWallet(erc721, A.sofia, alephaoTokens);
     }
 
-    function test_safeBatchTransferToSingleWallet_5_WhenWalletOwnAToken() public {
+    function test_safeBatchTransferToSingleWallet_5_WhenWalletOwnAToken()
+        public
+    {
         HEVM.prank(A.alephao);
         sut.safeBatchTransferToSingleWallet(erc721, A.bob, alephaoTokens);
     }
