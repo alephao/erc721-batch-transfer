@@ -2,3 +2,4 @@ cache/
 out/
 contracts/
 node_modules/
+.env

@@ -28,6 +28,9 @@ contract ERC721BatchTransfer {
         uint256 amount
     );
 
+    // solhint-disable-next-line no-empty-blocks
+    constructor() {}
+
     modifier noZero() {
         if (msg.sender == address(0)) revert InvalidCaller();
         _;
