@@ -6,7 +6,7 @@ To use this contract, first run `setApproveForAll` or `approve` in the ERC721 co
 
 ## User Interfaces
 
-- [ERC721 Batch Transfer UI v1.0](https://cf-ipfs.com/ipfs/QmU8Foyud7i9q5sqrkMtH6xm75dD5djHSm8mKz2KEBGuQV/) by @jwahdatehagh
+- [ERC721 Batch Transfer UI v1.0](https://cf-ipfs.com/ipfs/QmU8Foyud7i9q5sqrkMtH6xm75dD5djHSm8mKz2KEBGuQV/) by [@jwahdatehagh](https://github.com/jwahdatehagh)
 
 ## Deployments
 
